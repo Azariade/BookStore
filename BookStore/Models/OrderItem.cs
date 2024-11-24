@@ -26,10 +26,10 @@ namespace BookStore.Models
 
         [Required(ErrorMessage = "Le prix unitaire est obligatoire.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Le prix unitaire doit être une valeur positive.")]
-        public decimal UnitPrice { get; set; }
+        public decimal UnitPrice => Product.Price;
 
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Le montant total doit être une valeur positive.")]
-        public decimal TotalAmount { get; set; } // Doit avoir un setter
+        public decimal TotalAmount => UnitPrice * Quantity;
     }
 }
