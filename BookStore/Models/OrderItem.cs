@@ -10,12 +10,14 @@ namespace BookStore.Models
 
         [Required(ErrorMessage = "La commande associée est obligatoire.")]
         public int OrderId { get; set; }
+
         [Required]
         [ForeignKey("OrderId")]
         public Order Order { get; set; } // Relation avec l'entité Order
 
         [Required(ErrorMessage = "Le produit associé est obligatoire.")]
         public int ProductId { get; set; }
+
         [Required]
         [ForeignKey("ProductId")]
         public Product Product { get; set; } // Relation avec l'entité Product
