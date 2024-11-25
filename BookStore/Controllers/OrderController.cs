@@ -65,12 +65,10 @@ namespace BookStore.Controllers
                         // Créer un article de commande
                         var orderItem = new OrderItem
                         {
-                            ProductId = product.ProductId,
+                            Product = product,
                             Quantity = quantity,
-                            UnitPrice = product.Price,
-                            TotalAmount = product.Price * quantity
+                            Order = order,
                         };
-
                         orderItems.Add(orderItem);
                         totalOrderAmount += orderItem.TotalAmount;
 
@@ -106,7 +104,7 @@ namespace BookStore.Controllers
 
                     return RedirectToAction("Details", new { id = order.OrderId });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     transaction.Rollback(); // Annuler la transaction en cas d'erreur
                     ModelState.AddModelError("", "Une erreur s'est produite lors de la création de la commande.");
