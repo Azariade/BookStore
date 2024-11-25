@@ -8,8 +8,11 @@ namespace BookStore.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductId { get; set; }
+
+        [Required(ErrorMessage = "Le nom du produit est obligatoire.")]
         [StringLength(150)]
         public required string Name { get; set; }
+
         [Required(ErrorMessage = "Le prix est obligatoire.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Le prix doit être un nombre positif.")]
         public decimal Price { get; set; }
